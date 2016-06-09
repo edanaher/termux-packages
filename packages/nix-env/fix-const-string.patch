@@ -1,0 +1,12 @@
+diff -purN src/src/libexpr/primops.cc src2/src/libexpr/primops.cc
+--- src/src/libexpr/primops.cc	2016-06-05 19:24:40.691355807 +0000
++++ src2/src/libexpr/primops.cc	2016-02-11 09:12:17.000000000 +0000
+@@ -162,7 +162,7 @@ static void prim_importNative(EvalState
+     dlerror();
+     ValueInitializer func = (ValueInitializer) dlsym(handle, sym.c_str());
+     if(!func) {
+-        char *message = dlerror();
++        const char *message = dlerror();
+         if (message)
+             throw EvalError(format("could not load symbol ‘%1%’ from ‘%2%’: %3%") % sym % path % message);
+         else

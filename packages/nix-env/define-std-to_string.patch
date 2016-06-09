@@ -1,0 +1,28 @@
+diff -purN src/src/libutil/util.hh src2/src/libutil/util.hh
+--- src/src/libutil/util.hh	2016-02-11 09:12:17.000000000 +0000
++++ src2/src/libutil/util.hh	2016-06-04 22:09:46.493632928 +0000
+@@ -10,6 +10,8 @@
+ #include <functional>
+ 
+ #include <cstdio>
++#include <string>
++#include <sstream>
+ 
+ #ifndef HAVE_STRUCT_DIRENT_D_TYPE
+ #define DT_UNKNOWN 0
+@@ -412,3 +414,15 @@ string base64Decode(const string & s);
+ 
+ 
+ }
++
++/* Search the Internet for "std to_string android" */
++#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
++namespace std {
++  template<typename T>
++  std::string to_string(const T& t) {
++  	std::ostringstream os;
++  	os << t;
++  	return os.str();
++  }
++}
++#endif

@@ -1,0 +1,13 @@
+Binary files src/src/libutil/.monitor-fd.hh.swp and src2/src/libutil/.monitor-fd.hh.swp differ
+diff -purN src/src/libutil/monitor-fd.hh src2/src/libutil/monitor-fd.hh
+--- src/src/libutil/monitor-fd.hh	2016-06-04 22:21:10.869170359 +0000
++++ src2/src/libutil/monitor-fd.hh	2016-02-11 09:12:17.000000000 +0000
+@@ -34,7 +34,7 @@ public:
+ 
+     ~MonitorFdHup()
+     {
+-        pthread_cancel(thread.native_handle());
++        pthread_kill(thread.native_handle(), SIGUSR1);
+         thread.join();
+     }
+ };

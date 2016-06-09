@@ -1,0 +1,17 @@
+diff -purN src/src/libstore/build.cc src2/src/libstore/build.cc
+--- src/src/libstore/build.cc	2016-02-11 09:12:17.000000000 +0000
++++ src2/src/libstore/build.cc	2016-06-04 21:44:30.927254231 +0000
+@@ -2260,11 +2260,11 @@ void DerivationGoal::runChild()
+ 
+             /* Set the hostname etc. to fixed values. */
+-            char hostname[] = "localhost";
++            /* char hostname[] = "localhost";
+             if (sethostname(hostname, sizeof(hostname)) == -1)
+                 throw SysError("cannot set host name");
+             char domainname[] = "(none)"; // kernel default
+             if (setdomainname(domainname, sizeof(domainname)) == -1)
+-                throw SysError("cannot set domain name");
++                throw SysError("cannot set domain name"); */
+ 
+             /* Make all filesystems private.  This is necessary
+                because subtrees may have been mounted as "shared"

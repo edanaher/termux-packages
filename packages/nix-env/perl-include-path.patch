@@ -1,0 +1,13 @@
+Binary files src/perl/.local.mk.swp and src2/perl/.local.mk.swp differ
+diff -purN src/perl/local.mk src2/perl/local.mk
+--- src/perl/local.mk	2016-06-05 19:21:25.810084534 +0000
++++ src2/perl/local.mk	2016-02-11 09:12:17.000000000 +0000
+@@ -23,7 +23,7 @@ ifeq ($(perlbindings), yes)
+   Store_SOURCES := $(Store_DIR)/Store.cc
+ 
+   Store_CXXFLAGS = \
+-    -I$(shell $(perl) -e 'use Config; print $$Config{archlibexp};')/CORE \
++    -I/data/data/com.termux/files/usr/include/perl \
+     -D_FILE_OFFSET_BITS=64 \
+     -Wno-unknown-warning-option -Wno-unused-variable -Wno-literal-suffix \
+     -Wno-reserved-user-defined-literal -Wno-duplicate-decl-specifier -Wno-pointer-bool-conversion

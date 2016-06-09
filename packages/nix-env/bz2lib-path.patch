@@ -1,0 +1,27 @@
+diff -purN src/src/bsdiff-4.3/local.mk src2/src/bsdiff-4.3/local.mk
+--- src/src/bsdiff-4.3/local.mk	2016-02-11 09:12:17.000000000 +0000
++++ src2/src/bsdiff-4.3/local.mk	2016-06-05 20:19:59.545077170 +0000
+@@ -2,10 +2,10 @@ programs += bsdiff bspatch
+ 
+ bsdiff_DIR := $(d)
+ bsdiff_SOURCES := $(d)/bsdiff.c
+-bsdiff_LDFLAGS = -lbz2 $(bsddiff_compat_include)
++bsdiff_LDFLAGS = -lbz2 $(bsddiff_compat_include) -L/data/data/com.termux/files/usr/lib
+ bsdiff_INSTALL_DIR = $(libexecdir)/nix
+ 
+ bspatch_DIR := $(d)
+ bspatch_SOURCES := $(d)/bspatch.c
+-bspatch_LDFLAGS = -lbz2 $(bsddiff_compat_include)
++bspatch_LDFLAGS = -lbz2 $(bsddiff_compat_include) -L/data/data/com.termux/files/usr/lib
+ bspatch_INSTALL_DIR = $(libexecdir)/nix
+diff -purN src/src/nix-store/local.mk src2/src/nix-store/local.mk
+--- src/src/nix-store/local.mk	2016-02-11 09:12:17.000000000 +0000
++++ src2/src/nix-store/local.mk	2016-06-05 20:17:14.550138437 +0000
+@@ -6,6 +6,6 @@ nix-store_SOURCES := $(wildcard $(d)/*.c
+ 
+ nix-store_LIBS = libmain libstore libutil libformat
+ 
+-nix-store_LDFLAGS = -lbz2 -pthread $(SODIUM_LIBS)
++nix-store_LDFLAGS = -lbz2 -pthread $(SODIUM_LIBS) -L/data/data/com.termux/files/usr/lib
+ 
+ nix-store_CXXFLAGS = -DCURL=\"$(curl)\"
