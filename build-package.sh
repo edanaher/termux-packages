@@ -702,6 +702,11 @@ if [ "$TERMUX_PKG_DEPENDS" != "${TERMUX_PKG_DEPENDS/libandroid-support/}" ]; the
 	export LDFLAGS="$LDFLAGS -landroid-support"
 fi
 
+if [ "$TERMUX_PKG_DEPENDS" != "${TERMUX_PKG_DEPENDS/perl/}" ]; then
+	# If using the android support library, link to it and include its headers as system headers:
+	export CPPFLAGS="$CPPFLAGS -I${TERMUX_PREFIX}/include/perl"
+fi
+
 if [ -n "$TERMUX_PKG_BUILD_IN_SRC" ]; then
 	echo "Building in src due to TERMUX_PKG_BUILD_IN_SRC being set" >> $TERMUX_PKG_BUILDDIR/BUILDING_IN_SRC.txt
 	TERMUX_PKG_BUILDDIR=$TERMUX_PKG_SRCDIR

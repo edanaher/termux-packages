@@ -70,6 +70,7 @@ termux_step_post_make_install () {
 	ln -s pstruct.1 c2ph.1
 
 	# Fix reference to termux.spec used only when cross compiling:
+  apt-get install --reinstall perl-base
 	perl -p -i -e 's@-specs=/home/fornwall/dc/termux.spec@@g' $TERMUX_PREFIX/lib/perl5/*/*-linux/Config_heavy.pl
 
 	# lib/perl5/5.22.0/arm-linux/Config_heavy.pl
